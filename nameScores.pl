@@ -14,8 +14,18 @@ my $x = GetOptions (
 	'file=s' => \$file,
 );
 
-&map;
-&readfile($file);
+if (defined($file)) {
+	&map;
+	&readfile($file);
+}
+else {
+        &usage;
+}
+
+sub usage{
+        print"ERROR............ See usage below:\n";
+        print "$0 -file <filename>\n";
+}
 
 sub map {
 	my $value = 1;
