@@ -1,25 +1,26 @@
-#!/usr/bin/perl
+#/usr/bin/perl
 
 use strict;
 use warnings;
 
-my @arr = qw(34 56 232 687 3453 23 7 9 343 23);
-my $i; 
+my $i;
 my $j;
-my $k;
+my @arr;
+my @new = qw(34 7 232 687 3453 23 56 9 343 23);
+print "orig arr: @new\n";
 
-sub selection_sort{
-   for($i=0; $i <= $#arr; $i++) {
-	for($j=$i, $k=$i; $j <= $#arr; $j++) {
-		if ($arr[$j] < $arr[$k]) {
-			$k = $j;
+&selection_sort(@new);
+
+sub selection_sort {
+	my @arr = @_;
+	print "input of func is: @arr\n";
+	foreach my $k (@arr){
+		for ($i = 0, $j = 1; $j <= $#arr; $i++, $j++) {
+			if ($arr[$i] > $arr[($j)]) {
+				@arr[$i,$j] = @arr[$j,$i];
+			}
 		}
 	}
-	my $temp = $arr[$i];
-	$arr[$i] = $arr[$k];
-	$arr[$k] = $temp;
-   }
+	print "sorted array is: @arr\n";
 }
 
-&selection_sort(@arr);
-print "sorted array is @arr\n";
