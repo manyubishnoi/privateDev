@@ -3,8 +3,9 @@
 # This script does a binary search to find a bad CL which is where between the
 # CL 100 and CL 200. We write a hypothetic function (isGood) which confirms 
 # if the current CL is good or bad by comparing it with a known point (190 here)
+# Function binary will recursively call isGood to reach the end goal.
 
-# Func binary will recursively call isGood to reach the end goal.
+# Asked in facebook interview.
 
 use strict;
 use warnings;
@@ -51,8 +52,5 @@ sub isGood {
 	}
 	elsif ($inp > $desired) {
 		return 2
-	}
-	else {
-		return 5;
 	}
 }
