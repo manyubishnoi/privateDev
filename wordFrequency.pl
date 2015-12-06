@@ -2,6 +2,8 @@
 
 # This program counts the frequency of each each word in a text file.
 
+# Asked in Google Interview.
+
 use strict;
 use warnings;
 use Getopt::Long;

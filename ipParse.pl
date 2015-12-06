@@ -1,5 +1,9 @@
 #!/usr/bin/perl
 
+# Confirms if the user specified IP address is valid or not.
+
+# Asked in facebook interview.
+
 use strict;
 use warnings;
 
