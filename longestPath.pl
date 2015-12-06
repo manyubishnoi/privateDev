@@ -11,6 +11,7 @@
 use strict;
 use warnings;
 
+my $TimeAtEachHop = 5;
 my @arr1 = qw(a b e h i);
 my @arr2 = qw(a b e h j k);
 my @arr3 = qw(a b f l m);
@@ -24,7 +25,10 @@ foreach my $path (@arr) {
 	&longestPath(@$path);
 }
 
+my $finalTime = $TimeAtEachHop*$largest;
+
 print "Largest length and path are: @array\n";
+print "Overall time required to complete the tests: $finalTime\n";
 
 sub longestPath {
 	my @p = @_;
