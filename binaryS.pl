@@ -2,7 +2,7 @@
 
 # This script does a binary search to find a bad CL which is where between the
 # CL 100 and CL 200. We write a hypothetic function (isGood) which confirms 
-# if the current CL is good or bad by comparing it with a known point (190 here)
+# if the current CL is good or bad by comparing it with a known point ($desired here)
 # Function binary will recursively call isGood to reach the end goal.
 
 # Asked in facebook interview.
@@ -18,27 +18,27 @@ sub binary {
 	my $high = shift;
 	my $low = shift;
 	my $mid = int ($high+$low)/2;
-	my $ret = 10;
 	print "INIT: good: $low\t mid: $mid\t $bad: $high\n";
-	$ret = &isGood($mid);
-	while (int $good < int $bad && $ret != 0) {
+	my $ret = &isGood($mid);
+	while (int $low < int $high && $ret != 0) {
 		if ($ret == 1) {
-			$good = $mid;
-			$mid = ($mid + $bad)/2; 
-			print "1: good: $good\t mid: $mid\t bad: $bad\n";
+			$low = int $mid;
+			$mid = int ($mid + $high)/2; 
+			print "1: good: $low\t mid: $mid\t bad: $high\n";
 			$ret = &isGood ($mid);
 			next;
 		}
 		elsif ($ret == 2) {
-			$bad = $mid;
-			$mid = ($mid + $good)/2;
-			print "2: good: $good\t mid: $mid\t bad: $bad\n";
+			$high = int $mid;
+			$mid = int ($mid + $low)/2;
+			print "2: good: $low\t mid: $mid\t bad: $high\n";
 			$ret = &isGood ($mid);
 			next;
 		}
 		return $ret;
 	}
-	print "return after while loop: $ret\n";
+	print "Bad Change: $mid\n";
+	return $mid;
 }
 
 sub isGood {
