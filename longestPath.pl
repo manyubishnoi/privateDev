@@ -3,6 +3,8 @@
 # This program finds the longest array (path). 
 # Use case would be suppose there are many branches of a tree
 # and we are required to find the longest branch. 
+# Here we assume that all the individual branches are known because a user selected them.
+# User input is then saved in the Database and those values are populated here from another script.
 
 # Asked in facebook interview.
 
@@ -16,10 +18,10 @@ my @arr4 = qw(a b f l n);
 my $largest = 0;
 my @array;
 
-my @arr = (\@arr1, \@arr2, \@arr3, \@arr4);
+my @arr = (\@arr1, \@arr2, \@arr3, \@arr4); #passing individual arrays by ref.
 
 foreach my $path (@arr) {
-	my $ret = &longestPath(@$path);
+	&longestPath(@$path);
 }
 
 print "Largest length and path are: @array\n";
@@ -33,6 +35,5 @@ sub longestPath {
 		@array = qq($len, @p);
 		$largest = $len;
 	}
-	return $len;
 }
 	
