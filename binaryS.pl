@@ -19,8 +19,8 @@ sub binary {
 	my $mid = int ($high+$low)/2;
 	my $ret = 10;
 	print "INIT: good: $low\t mid: $mid\t $bad: $high\n";
-	while (int $good < int $bad) {
-		$ret = &isGood($mid);
+	$ret = &isGood($mid);
+	while (int $good < int $bad && $ret != 0) {
 		if ($ret == 1) {
 			$good = $mid;
 			$mid = ($mid + $bad)/2; 
@@ -35,17 +35,14 @@ sub binary {
 			$ret = &isGood ($mid);
 			next;
 		}
-		else {
-			print "MATCH at mid: $mid\n";
-		}
-	print "value of mid is now: $mid\n";
-	return $ret;
+		return $ret;
 	}
+	print "return after while loop: $ret\n";
 }
 
 sub isGood {
 	my $inp = shift;
-	my $desired = 190;
+	my $desired = 120;
 	if ($inp == $desired) {
 		return 0;
 	}
