@@ -5,6 +5,8 @@
 # For example first print will have 1st lines from file 1, file 2 and file3. 
 # Then the second print will have line 2nd lines from file1, file2 and file3 and so on.
 
+# Asked in Google interview.
+
 use strict;
 use warnings;
 use Getopt::Long;

@@ -3,6 +3,8 @@
 #This program combines all the individual integer elements of the array and then produces the largest
 #possible number from the combination.
 
+# Asked in Google interview.
+
 use strict;
 use warnings;
 
